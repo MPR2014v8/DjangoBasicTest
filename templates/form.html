@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h2 align="center">สร้างโปรไฟล์ของคุณ</h2>
+    
+    {% if messages %}    
+        <div class="alert alert-danger" role="alert">
+            {% for message in messages %}
+                <h4>{{ message }}</h4>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <form action="addForm" method="post">
+        {% csrf_token %} {% comment %} token เพิ่มความปลอดภัยเมื่อรับข้อมูล {% endcomment %}
+        <div class="form-group">
+            <label for="">Username</label>
+            <input type="text" class="form-control" name="username">
+        </div>
+        <div class="form-group">
+            <label for="">First Name</label>
+            <input type="text" class="form-control" name="firstname">
+        </div>
+        <div class="form-group">
+            <label for="">Last Name</label>
+            <input type="text" class="form-control" name="lastname">
+        </div>
+        <div class="form-group">
+            <label for="">Email</label>
+            <input type="email" class="form-control" name="email">
+        </div>
+        <div class="form-group">
+            <label for="">Password</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+        <div class="form-group">
+            <label for="">Re-Password</label>
+            <input type="password" class="form-control" name="repassword">
+        </div>
+        <input type="submit" value="ลงทะเบียน" class="btn btn-primary">
+    </form>
+{% endblock  %}
